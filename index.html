@@ -263,3 +263,33 @@
 <div class="chatbot">
     <a href="https://chatgpt.com" target="_blank">💬</a>
 </div>
+
+<div class="chat-container" id="chat-container">
+    <div class="chat-messages" id="chat-messages"></div>
+    <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChat(event)">
+</div>
+
+<div class="feedback-container">
+    <h3>Your Feedback</h3>
+    <textarea id="feedback-text" placeholder="Share your insights..."></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+</div>
+
+<footer>
+    <p>&copy; 2025 FLL Submerged | Innovation for Marine Life</p>
+</footer>
+
+<script>
+    function submitFeedback() {
+        const feedback = document.getElementById('feedback-text').value;
+        if (feedback.trim() !== "") {
+            alert("Thank you for your feedback!");
+            document.getElementById('feedback-text').value = "";
+        } else {
+            alert("Please enter some feedback before submitting.");
+        }
+    }
+</script>
+
+</body>
+</html>
