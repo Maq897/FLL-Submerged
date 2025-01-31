@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FLL Submerged: Ocean Life Challenges</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0074D9;
+            --secondary-color: #004d7a;
+            --button-hover: #005f8d;
+            --button-background: #005f8d;
+            --header-background: linear-gradient(45deg, #0074D9, #004d7a);
+            --text-color: #001f3f;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #cce7ff, #e6f7ff);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        header {
+            background: var(--header-background);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 4px 8px; /* Reduced padding to make button smaller */
+            border-radius: 50px;
+            background-color: var(--button-background);
+            font-size: 0.75em; /* Smaller font size for buttons */
+            transition: all 0.3s;
+        }
+
+        header nav a:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.05);
+        }
+
+        .content-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .challenges {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .challenges h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .challenges ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .challenges li {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            max-width: 350px;
+            transition: transform 0.4s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .challenges li img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .challenges li:hover {
+            transform: scale(1.05);
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .chatbot:hover, .chatbot:active {
+            transform: scale(1.1);
+        }
+
+        .chatbot a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            width: 320px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .feedback-container {
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .feedback-container textarea {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            resize: vertical;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-container button {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1em;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .feedback-container button:hover {
+            background-color: var(--button-hover);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 1.1em;
+        }
+
+        .intro-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+        }
+
+        .intro-section p {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="https://www.firstinspires.org/robotics/fll" target="_blank">Home</a>
+        <a href="#about">About</a>
+        <a href="https://www.oceanconservancy.org" target="_blank">Learn More</a>
+    </nav>
+    <h1>FLL Submerged</h1>
+</header>
+
+<div class="content-container">
+    <section class="intro-section" id="about">
+        <h2>About FLL Submerged</h2>
+        <p>FLL Submerged is a global initiative that aims to raise awareness about the threats facing marine life and the oceans. It encourages innovation and creativity through its challenges to inspire the next generation of environmental leaders. By using robotics and engineering, FLL teams engage with ocean-related problems, seeking solutions to protect marine ecosystems and ensure sustainable practices.</p>
+        <p>The FLL Submerged program also focuses on educating the public about the importance of preserving ocean biodiversity and finding ways to reduce pollution, tackle climate change, and promote sustainable fishing practices.</p>
+    </section>
+
+    <section class="challenges">
+        <h2>Challenges Faced by Ocean Animals</h2>
+        <ul>
+            <li onclick="window.open('https://oceanconservancy.org/trash-free-seas/', '_blank')">
+                <img src="Ocean_Pollution(1).jpg" alt="Ocean Pollution">
+                <h3>Pollution</h3>
+                <p>Plastic waste and toxins endanger marine ecosystems.</p>
+            </li>
+            <li onclick="window.open('https://climate.nasa.gov/', '_blank')">
+                <img src="Bleached_Coral.jpg" alt="Climate Change">
+                <h3>Climate Change</h3>
+                <p>Rising temperatures and acidification threaten biodiversity.</p>
+            </li>
+            <li onclick="window.open('https://www.worldwildlife.org/threats/overfishing', '_blank')">
+                <img src="Overfishing.jpg" alt="Overfishing">
+                <h3>Overfishing</h3>
+                <p>Destructive fishing practices deplete marine populations.</p>
+            </li>
+            <li onclick="window.open('https://ocean.si.edu/ocean-life/ocean-habitats', '_blank')">
+                <img src="Habitat_Destruction.jpg" alt="Habitat Destruction">
+                <h3>Habitat Destruction</h3>
+                <p>Human activities degrade critical marine environments.</p>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<div class="chatbot">
+    <a href="https://chatgpt.com" target="_blank">💬</a>
+</div>
